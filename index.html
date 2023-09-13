@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+
+<body>
+  <div id="pantalla">
+    <div id="mitad1">
+
+      <div>
+        <div class="form-group">
+          <label for="inputNombre">Nombre</label>
+          <input type="text" class="form-control" id="inputNombre" aria-describedby="emailHelp"
+            placeholder="Ingrese nombre">
+        </div>
+        <div class="form-group">
+          <label for="inputApellido">Apellido</label>
+          <input type="text" class="form-control" id="inputApellido" placeholder="Ingrese apellido">
+        </div>
+        <div class="form-group">
+          <label for="inputCedula">Cedula</label>
+          <input type="text" class="form-control" id="inputCedula" aria-describedby="emailHelp"
+            placeholder="Ingrese nombre">
+        </div>
+        <div class="form-group">
+          <label for="inputNumero">Numero de contacto</label>
+          <input type="number" class="form-control" id="inputNumero" placeholder="Ingrese numero">
+        </div>
+        <div class="form-group">
+          <label for="inputDireccion">Direccion</label>
+          <input type="text" class="form-control" id="inputDireccion" placeholder="Ingrese direccion">
+        </div>
+        <button class="btn btn-primary mt-2">Guardar</button>
+      </div>
+    </div>
+
+    <div id="mitad2">
+
+      <div class="text-center container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Numero de contacto</th>
+              <th scope="col">Direccion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>Larry the Bird</td> <!-- colspan="2" saltear filas  !-->
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

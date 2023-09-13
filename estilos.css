@@ -1,0 +1,14 @@
+html, body {
+    height: 100%;
+}
+
+#pantalla{
+    height: 100vh;
+    display: flex;
+    flex-direction: row
+}
+
+
+#mitad1{
+    width: 40vw;
+}
