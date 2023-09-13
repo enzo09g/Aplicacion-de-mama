@@ -11,6 +11,11 @@ html, body {
 
 #mitad1{
     width: 40vw;
+    border-right: 1px solid black;
+}
+
+#mitad2{
+    flex-grow: 1;
 }
 
 
