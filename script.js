@@ -111,27 +111,3 @@ document.addEventListener("DOMContentLoaded", () => {
     agregar(arrayClientes);
   });
 });
-
-
-function descargarLocalStorageComoArchivo() {
-  // Obtén los datos de localStorage
-  const data = localStorage.getItem('lista');
-
-  if (data) {
-    // Crea un objeto Blob con los datos
-    const blob = new Blob([data], { type: 'application/json' });
-
-    // Crea un elemento <a> para el enlace de descarga
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'localStorageData.json'; // Nombre del archivo que se descargará
-
-    // Simula un clic en el enlace para iniciar la descarga
-    a.click();
-  } else {
-    console.error('No hay datos en localStorage para descargar.');
-  }
-}
-
-// Llama a la función para descargar localStorage como archivo
-descargarLocalStorageComoArchivo();
