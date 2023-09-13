@@ -30,7 +30,7 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.cedula}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
-            <td><button></td>
+            <td><button class="eliminar btn btn-danger"></td>
 
         </tr>
     `;
@@ -48,7 +48,7 @@ function cargarLista() {
                 <td>${i.cedula}</td>
                 <td>${i.numero}</td>
                 <td>${i.direccion}</td>
-                <td><button></td>
+                <td><button class="eliminar btn btn-danger"></td>
 
             </tr>
         `;
