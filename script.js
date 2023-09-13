@@ -1,15 +1,24 @@
 function agregar(array) {
   let inputs = document.getElementsByTagName("input");
-  console.log(inputs.length);
+  let booleanVacio = true;
+  for (let i of inputs) {
+    if (i.value.trim() == "") {
+      booleanVacio = false;
+    }
+  }
 
-  let cliente = {};
-  cliente.nombre = document.getElementById("inputNombre").value;
-  cliente.apellido = document.getElementById("inputApellido").value;
-  cliente.cedula = document.getElementById("inputCedula").value;
-  cliente.numero = document.getElementById("inputNumero").value;
-  cliente.direccion = document.getElementById("inputDireccion").value;
-  array.push(cliente);
-  mostrar(cliente, array);
+  if (booleanVacio) {
+    let cliente = {};
+    cliente.nombre = document.getElementById("inputNombre").value;
+    cliente.apellido = document.getElementById("inputApellido").value;
+    cliente.cedula = document.getElementById("inputCedula").value;
+    cliente.numero = document.getElementById("inputNumero").value;
+    cliente.direccion = document.getElementById("inputDireccion").value;
+    array.push(cliente);
+    mostrar(cliente, array);
+  }else{
+    alert('Ningun campo puede estar vacio')
+  }
 }
 
 function mostrar(objeto, arrayClientes) {
@@ -21,6 +30,8 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.cedula}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
+            <td><button></td>
+
         </tr>
     `;
   localStorage.setItem("lista", JSON.stringify(arrayClientes));
@@ -37,6 +48,8 @@ function cargarLista() {
                 <td>${i.cedula}</td>
                 <td>${i.numero}</td>
                 <td>${i.direccion}</td>
+                <td><button></td>
+
             </tr>
         `;
   }
