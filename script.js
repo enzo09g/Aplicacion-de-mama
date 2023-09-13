@@ -1,13 +1,9 @@
-function agregar(array) {
-  let inputs = document.getElementsByTagName("input");
-  let booleanVacio = true;
-  for (let i of inputs) {
-    if (i.value.trim() == "") {
-      booleanVacio = false;
-    }
-  }
 
-  if (booleanVacio) {
+
+function agregar(array) {
+
+
+  if (checkEnviar() && checkIdentico(array)) {
     let cliente = {};
     cliente.nombre = document.getElementById("inputNombre").value;
     cliente.apellido = document.getElementById("inputApellido").value;
@@ -16,9 +12,32 @@ function agregar(array) {
     cliente.direccion = document.getElementById("inputDireccion").value;
     array.push(cliente);
     mostrar(cliente, array);
-  }else{
-    alert('Ningun campo puede estar vacio')
   }
+}
+
+function checkEnviar() {
+  let inputs = document.getElementsByTagName("input");
+  let booleanVacio = true;
+  for (let i of inputs) {
+    if (i.value.trim() == "") {
+      alert('Error! Ningun campo puede estar vacio')
+      booleanVacio = false;
+      break;
+    }
+  }
+  return booleanVacio;
+}
+
+function checkIdentico(array) {
+  let booleanIdentico = true;
+  for (let i of array) {
+    if (document.getElementById('inputCedula').value == i.cedula) {
+      alert('Error! La cedula digitada ya esta en el registro')
+      booleanIdentico = false;
+      break;
+    }
+  }
+  return booleanIdentico;
 }
 
 function mostrar(objeto, arrayClientes) {
