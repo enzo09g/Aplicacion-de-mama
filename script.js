@@ -11,7 +11,15 @@ function agregar(array) {
     cliente.numero = document.getElementById("inputNumero").value;
     cliente.direccion = document.getElementById("inputDireccion").value;
     array.push(cliente);
+    vaciarInputs();
     mostrar(cliente, array);
+  }
+}
+
+function vaciarInputs() {
+  let inputs = document.getElementsByTagName("input");
+  for (let i of inputs) {
+    i.value = '';
   }
 }
 
