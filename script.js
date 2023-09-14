@@ -1,7 +1,7 @@
 let arrayClientes = [];
 
 function agregar(array) {
-  if (checkEnviar() && checkIdentico(array)) {
+  if (checkIdentico(array)) {
     let cliente = {};
     cliente.nombre = document.getElementById("inputNombre").value;
     cliente.apellido = document.getElementById("inputApellido").value;
@@ -52,10 +52,12 @@ function checkEnviar() {
 function checkIdentico(array) {
   let booleanIdentico = true;
   for (let i of array) {
-    if (document.getElementById("inputCedula").value == i.cedula) {
-      alert("Error! La cedula digitada ya esta en el registro");
-      booleanIdentico = false;
-      break;
+    if (document.getElementById("inputCedula").value) {
+      if (document.getElementById("inputCedula").value == i.cedula) {
+        alert("Error! La cedula digitada ya esta en el registro");
+        booleanIdentico = false;
+        break;
+      }
     }
   }
   return booleanIdentico;
