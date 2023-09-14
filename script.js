@@ -1,7 +1,7 @@
 let arrayClientes = [];
 
 function agregar(array) {
-  if (checkEnviar() && checkIdentico(array)) {
+  if (checkIdentico(array) && (checkVacio() && checkNombre())) {
     let cliente = {};
     cliente.nombre = document.getElementById("inputNombre").value;
     cliente.apellido = document.getElementById("inputApellido").value;
@@ -36,26 +36,55 @@ function vaciarInputs() {
   }
 }
 
-function checkEnviar() {
+function checkNombre() {
+  let booleanNombre = true;
+  if (
+    document.getElementById("inputNombre").value.trim() == "" ||
+    document.getElementById("inputApellido").value.trim() == ""
+  ) {
+    alert("Nombre o apellido vacio");
+    booleanNombre = false;
+  }
+  return booleanNombre;
+}
+
+function checkVacio() {
   let inputs = document.getElementsByTagName("input");
   let booleanVacio = true;
-  for (let i of inputs) {
-    if (i.value.trim() == "") {
-      alert("Error! Ningun campo puede estar vacio");
-      booleanVacio = false;
-      break;
-    }
+
+  if (
+    !(
+      inputs[0]?.value ||
+      inputs[1]?.value ||
+      inputs[2]?.value ||
+      inputs[3]?.value ||
+      inputs[4]?.value ||
+      inputs[5]?.value
+    )
+  ) {
+    alert("Todos los campos estan vacios");
+    booleanVacio = false;
   }
+
   return booleanVacio;
 }
 
 function checkIdentico(array) {
   let booleanIdentico = true;
   for (let i of array) {
-    if (document.getElementById("inputCedula").value == i.cedula) {
-      alert("Error! La cedula digitada ya esta en el registro");
-      booleanIdentico = false;
-      break;
+    if (document.getElementById("inputCedula").value) {
+      if (document.getElementById("inputCedula").value == i.cedula) {
+        alert("Error! La cedula digitada ya esta en el registro");
+        booleanIdentico = false;
+        break;
+      }
+    }
+    if (document.getElementById("inputNumero").value) {
+      if (document.getElementById("inputNumero").value == i.numero) {
+        alert("Error! El numero ingresado ya esta en el registro.");
+        booleanIdentico = false;
+        break;
+      }
     }
   }
   return booleanIdentico;
