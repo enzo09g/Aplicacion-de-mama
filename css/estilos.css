@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+    background-color: #ffff;
+}
+
+#pantalla{
+    height: 100vh;
+    display: flex;
+    flex-direction: row
+}
+
+
+#mitad1{
+    width: 35vw;
+    border-right: 1px solid black;
+}
+
+#mitad2{
+    flex-grow: 1;
+}
+
+
+.eliminar{
+    width: 1.1rem;
+    height: 1.7rem;
+    background-image: url('/imagenes/trash3.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.editar{
+    width: 1.1rem;
+    height: 1.7rem;
+    background-image: url('/imagenes/pencil-square.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.overlay{
+    height: 50%;
+    width: 50%;
+    background-color: aliceblue;
+    position: fixed;
+    z-index: 9999;
+    box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);  
+    border-radius: 10px;
+    top: 15%;
+    left: 25%;
+}
+
+#transparente{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    z-index: 5000;
+    position: fixed;
+    top: 0px;   
+}
