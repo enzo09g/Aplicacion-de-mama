@@ -194,10 +194,22 @@ function editarFormulario(indice) {
   let apellidoInput = document.getElementById("editApellido").value;
   let numeroInput = document.getElementById("editNumero").value;
   let cedulaInput = document.getElementById("editCedula").value;
+  let booleanIdentico = true;
 
-
+  for(let i = 0; i < arrayClientes.length; i++){
+    if(numeroInput == arrayClientes[i].numero && indice != i ){
+      alert('Error! El numero ya esta en el registro');
+      booleanIdentico = false;
+      break;
+    }
+    if(cedulaInput == arrayClientes[i].cedula && indice != i){
+      alert('Error! La cedula ya esta en el registro');
+      booleanIdentico = false;
+      break;
+    }
+  }
   if (
-    checkIdentico(arrayClientes, numeroInput, cedulaInput) &&
+    booleanIdentico &&
     checkVacio(document.getElementsByClassName("formEscondido")) &&
     checkNombre(nombreInput, apellidoInput)
   ) {
