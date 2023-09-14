@@ -100,14 +100,8 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.root}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
-            <td><button onclick="borrarElemento(${obtenerUltimoIndice(
-              arrayClientes
-            )})" id="${obtenerUltimoIndice(
-    arrayClientes
-  )}" class="eliminar btn btn-danger"></td>
-            <td><button id="${obtenerUltimoIndice(
-              arrayClientes
-            )}" class="btn btn-danger"></td>
+            <td><button onclick="borrarElemento(${obtenerUltimoIndice(arrayClientes)})" id="${obtenerUltimoIndice(arrayClientes)}" class="eliminar btn btn-danger"></td>
+            <td><button id="${obtenerUltimoIndice(arrayClientes)}" class="btn btn-warning"></td>
             </tr>
     `;
 }
@@ -125,8 +119,7 @@ function cargarLista(lista) {
                 <td>${lista[i].numero}</td>
                 <td>${lista[i].direccion}</td>
                 <td><button onclick="borrarElemento(${i})" id="${i}" class="eliminar btn btn-danger"></button></td>
-                <td><button id="${i}" class="btn btn-danger"></button></td>
-            
+                <td><button id="${i}" class="editar btn btn-warning"></button></td>
                 </tr>
         `;
   }
