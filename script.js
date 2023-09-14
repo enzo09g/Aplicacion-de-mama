@@ -107,14 +107,8 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.root}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
-            <td><button onclick="borrarElemento(${obtenerUltimoIndice(
-              arrayClientes
-            )})" id="${obtenerUltimoIndice(
-    arrayClientes
-  )}" class="eliminar btn btn-danger"></td>
-            <td><button id="${obtenerUltimoIndice(
-              arrayClientes
-            )}" class="btn btn-warning"></td>
+            <td><button onclick="borrarElemento(${obtenerUltimoIndice(arrayClientes)})" id="${obtenerUltimoIndice(arrayClientes)}" class="eliminar btn btn-danger"></td>
+            <td><button class="editar btn btn-warning" id="${obtenerUltimoIndice(arrayClientes)}"></td>
             </tr>
     `;
 }
