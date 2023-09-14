@@ -59,6 +59,13 @@ function checkIdentico(array) {
         break;
       }
     }
+    if (document.getElementById("inputNumero").value) {
+      if (document.getElementById("inputNumero").value == i.numero) {
+        alert("Error! El numero ingresado ya esta en el registro.");
+        booleanIdentico = false;
+        break;
+      }
+    }
   }
   return booleanIdentico;
 }
