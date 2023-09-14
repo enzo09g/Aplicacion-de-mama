@@ -23,7 +23,7 @@ html, body {
 .eliminar{
     width: 1.1rem;
     height: 1.7rem;
-    background-image: url('imagenes/trash3.svg');
+    background-image: url('../image/trash3.svg');
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -31,7 +31,7 @@ html, body {
 .editar{
     width: 1.1rem;
     height: 1.7rem;
-    background-image: url('imagenes/pencil-square.svg');
+    background-image: url("../image/pencil-square.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
