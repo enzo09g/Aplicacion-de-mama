@@ -1,7 +1,7 @@
 let arrayClientes = [];
 
 function agregar(array) {
-  if (checkIdentico(array) && (checkVacio() && checkNombre())) {
+  if (checkIdentico(array) && checkVacio() && checkNombre()) {
     let cliente = {};
     cliente.nombre = document.getElementById("inputNombre").value;
     cliente.apellido = document.getElementById("inputApellido").value;
