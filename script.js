@@ -121,7 +121,6 @@ function mostrar(objeto, arrayClientes) {
 
 function cargarLista(lista) {
   let contenedor = document.getElementById("contenedor-lista");
-  console.log(typeof lista);
   for (let i = 0; i < lista.length; i++) {
     contenedor.innerHTML += `
             <tr>
@@ -238,7 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
   tabla.addEventListener("click", (evento) => {
     if (evento.target.classList.contains("editar")) {
       mostrarEditar(evento.target.id);
-      console.log(evento.target.id);
 
       let btnCancelar = document.getElementById("btnCancelar");
       let btnGuardar = document.getElementById("btnGuardarForm");
