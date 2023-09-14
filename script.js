@@ -100,8 +100,14 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.root}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
-            <td><button onclick="borrarElemento(${obtenerUltimoIndice(arrayClientes)})" id="${obtenerUltimoIndice(arrayClientes)}" class="eliminar btn btn-danger"></td>
-            <td><button id="${obtenerUltimoIndice(arrayClientes)}" class="btn btn-warning"></td>
+            <td><button onclick="borrarElemento(${obtenerUltimoIndice(
+              arrayClientes
+            )})" id="${obtenerUltimoIndice(
+    arrayClientes
+  )}" class="eliminar btn btn-danger"></td>
+            <td><button id="${obtenerUltimoIndice(
+              arrayClientes
+            )}" class="btn btn-warning"></td>
             </tr>
     `;
 }
@@ -134,11 +140,70 @@ function borrarElemento(indice) {
   cargarLista(arrayClientes);
 }
 
+function mostrarEditar(indice) {
+  let contenedorEscondido = document.getElementById("escondido");
+  contenedorEscondido.innerHTML += `
+    <div id="transparente">
+    </div>
+    <div id="editFormulario" class="overlay align-items-center text-center">
+      <div class="card">
+        <h5 class="text-center mb-4">Editar Informacion</h5>
+  
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nombre<span
+                class="text-danger"> *</span></label> <input type="text" id="editNombre" placeholder="Ingrese nombre">
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Apellido<span
+                class="text-danger"> *</span></label> <input type="text" id="editApellido" placeholder="Ingrese apllido">
+          </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Cedula<span
+                class="text-danger"> *</span></label> <input type="text" id="editCedula" placeholder="Ingrese cedula">
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Root<span
+                class="text-danger"> *</span></label> <input type="text" id="editRoot" placeholder="Ingrese root">
+          </div>
+        </div>
+        <div class="row justify-content-between text-left">
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Numero<span
+                class="text-danger"> *</span></label> <input type="text" id="editNumero" placeholder="Ingrese numero">
+          </div>
+          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Direccion<span
+                class="text-danger"> *</span></label> <input type="text" id="editDireccion"
+              placeholder="Ingrese direccion">
+          </div>
+        </div>
+  
+        <div class="row mt-2">
+          <div class="form-group col-sm-4 offset-2"> <button class="btn btn-block btn-primary">Guardar</button></div>
+          <div class="form-group col-sm-4"> <button onclick="esconderFormulario()" class="btn btn-block btn-warning">Cancelar</button></div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function esconderFormulario(){
+  let contenedorEscondido = document.getElementById('escondido');
+  let formulario = document.getElementById('editFormulario');
+  let transparente = document.getElementById('transparente')
+  contenedorEscondido.removeChild(formulario);
+  contenedorEscondido.removeChild(transparente);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   actualizarArrayClientes();
   let btnGuardar = document.getElementById("btnGuardar");
   cargarLista(arrayClientes);
   btnGuardar.addEventListener("click", () => {
     agregar(arrayClientes);
+  });
+
+  let tabla = document.getElementById("tabla");
+  tabla.addEventListener("click", (e) => {
+    if (e.target.classList.contains("editar")) {
+      mostrarEditar(e.target.id);
+      console.log(e.target.id);
+    }
   });
 });
