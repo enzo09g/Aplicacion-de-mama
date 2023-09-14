@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    background-color: violet;
+    background-color: #ffff;
 }
 
 #pantalla{
@@ -34,4 +34,25 @@ html, body {
     background-image: url('imagenes/pencil-square.svg');
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.overlay{
+    height: 50%;
+    width: 50%;
+    background-color: aliceblue;
+    position: fixed;
+    z-index: 9999;
+    box-shadow:  0px 0px 50px rgba(0, 0, 0, 0.74);  
+    border-radius: 10px;
+    top: 25%;
+    left: 25%;
+}
+
+#transparente{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    z-index: 5000;
+    position: fixed;
+    top: 0px;   
 }
