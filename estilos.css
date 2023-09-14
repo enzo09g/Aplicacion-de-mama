@@ -1,5 +1,6 @@
 html, body {
     height: 100%;
+    background-color: violet;
 }
 
 #pantalla{
@@ -10,7 +11,7 @@ html, body {
 
 
 #mitad1{
-    width: 40vw;
+    width: 35vw;
     border-right: 1px solid black;
 }
 
