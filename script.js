@@ -107,13 +107,13 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
             <td><button onclick="borrarElemento(${obtenerUltimoIndice(
-              arrayClientes
-            )})" id="${obtenerUltimoIndice(
+    arrayClientes
+  )})" id="${obtenerUltimoIndice(
     arrayClientes
   )}" class="eliminar btn btn-danger"></td>
             <td><button class="editar btn btn-warning" id="${obtenerUltimoIndice(
-              arrayClientes
-            )}"></td>
+    arrayClientes
+  )}"></td>
             </tr>
     `;
 }
@@ -228,20 +228,20 @@ function editarFormulario(indice) {
   }
 }
 
-function moverAlSiguienteInput(event, id){
-  if(event.key == 'Enter'){
-    event.preventDefault();
+function moverAlSiguienteInput(event, funcion, claseInputs, id = arrayClientes) {
+  if (event.key == 'Enter') {
+    // event.preventDefault();
     focusInput = event.target;
-    let inputs = document.getElementsByClassName('formEscondido');
+    let inputs = document.getElementsByClassName(claseInputs);
     let inputs2 = Array.from(inputs);
     let index = inputs2.indexOf(focusInput);
     // let indexFocus = inputs.indexOf(focusInput);
 
-    if(index == inputs.length - 1){
-      editarFormulario(id);
+    if (index == inputs.length - 1) {
+      funcion(id);
     }
 
-    if(index < (inputs.length - 1)){
+    if (index < (inputs.length - 1)) {
       let proximoInput = inputs[index + 1];
       proximoInput.focus();
     }
@@ -258,8 +258,8 @@ function esconderFormulario() {
 
 document.addEventListener("DOMContentLoaded", () => {
   actualizarArrayClientes();
-  let btnGuardar = document.getElementById("btnGuardar");
   cargarLista(arrayClientes);
+  let btnGuardar = document.getElementById("btnGuardar");
   btnGuardar.addEventListener("click", () => {
     agregar(arrayClientes);
   });
@@ -275,12 +275,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("editNombre").focus();
 
       editFormulario.addEventListener("keydown", (eventoEnter) => {
-        if(eventoEnter.key == 'Escape'){
+        if (eventoEnter.key == 'Escape') {
           console.log(eventoEnter.key)
           esconderFormulario();
         }
         if (eventoEnter.key == "Enter") {
-          moverAlSiguienteInput(eventoEnter, evento.target.id)
+          moverAlSiguienteInput(eventoEnter, editarFormulario, "formEscondido", evento.target.id)
         }
       });
       btnCancelar.addEventListener("click", () => {
@@ -292,4 +292,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  let contenedorGuardar = document.getElementById('contenedorGuardar');
+  contenedorGuardar.addEventListener('keydown', (eventoEnter) => {
+    if(eventoEnter.key == 'Enter'){
+      moverAlSiguienteInput(eventoEnter, agregar ,'formVisible')
+    }
+  })
 });
