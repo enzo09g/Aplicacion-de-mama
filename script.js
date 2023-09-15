@@ -7,7 +7,6 @@ function agregar(array) {
   let inputNumero = document.getElementById("inputNumero").value;
   let inputCedula = document.getElementById("inputCedula").value;
 
-
   if (
     checkIdentico(array, inputNumero, inputCedula) &&
     checkVacio(inputs) &&
@@ -107,8 +106,14 @@ function mostrar(objeto, arrayClientes) {
             <td>${objeto.root}</td>
             <td>${objeto.numero}</td>
             <td>${objeto.direccion}</td>
-            <td><button onclick="borrarElemento(${obtenerUltimoIndice(arrayClientes)})" id="${obtenerUltimoIndice(arrayClientes)}" class="eliminar btn btn-danger"></td>
-            <td><button class="editar btn btn-warning" id="${obtenerUltimoIndice(arrayClientes)}"></td>
+            <td><button onclick="borrarElemento(${obtenerUltimoIndice(
+              arrayClientes
+            )})" id="${obtenerUltimoIndice(
+    arrayClientes
+  )}" class="eliminar btn btn-danger"></td>
+            <td><button class="editar btn btn-warning" id="${obtenerUltimoIndice(
+              arrayClientes
+            )}"></td>
             </tr>
     `;
 }
@@ -146,7 +151,7 @@ function mostrarEditar(indice) {
     <div id="transparente">
     </div>
     <div id="editFormulario" class="overlay align-items-center text-center">
-      <div class="card">
+      <div class="card" id="editCard">
         <h5 class="text-center mb-4">Editar Informacion</h5>
   
         <div class="row justify-content-between text-left">
@@ -190,14 +195,14 @@ function editarFormulario(indice) {
   let cedulaInput = document.getElementById("editCedula").value;
   let booleanIdentico = true;
 
-  for(let i = 0; i < arrayClientes.length; i++){
-    if(numeroInput == arrayClientes[i].numero && indice != i ){
-      alert('Error! El numero ya esta en el registro');
+  for (let i = 0; i < arrayClientes.length; i++) {
+    if (numeroInput == arrayClientes[i].numero && indice != i) {
+      alert("Error! El numero ya esta en el registro");
       booleanIdentico = false;
       break;
     }
-    if(cedulaInput == arrayClientes[i].cedula && indice != i){
-      alert('Error! La cedula ya esta en el registro');
+    if (cedulaInput == arrayClientes[i].cedula && indice != i) {
+      alert("Error! La cedula ya esta en el registro");
       booleanIdentico = false;
       break;
     }
@@ -220,6 +225,26 @@ function editarFormulario(indice) {
     esconderFormulario();
     document.getElementById("contenedor-lista").textContent = "";
     cargarLista(arrayClientes);
+  }
+}
+
+function moverAlSiguienteInput(event, id){
+  if(event.key == 'Enter'){
+    event.preventDefault();
+    focusInput = event.target;
+    let inputs = document.getElementsByClassName('formEscondido');
+    let inputs2 = Array.from(inputs);
+    let index = inputs2.indexOf(focusInput);
+    // let indexFocus = inputs.indexOf(focusInput);
+
+    if(index == inputs.length - 1){
+      editarFormulario(id);
+    }
+
+    if(index < (inputs.length - 1)){
+      let proximoInput = inputs[index + 1];
+      proximoInput.focus();
+    }
   }
 }
 
@@ -246,7 +271,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let btnCancelar = document.getElementById("btnCancelar");
       let btnGuardar = document.getElementById("btnGuardarForm");
+      let editFormulario = document.getElementById("editFormulario");
+      document.getElementById("editNombre").focus();
 
+      editFormulario.addEventListener("keydown", (eventoEnter) => {
+        if(eventoEnter.key == 'Escape'){
+          console.log(eventoEnter.key)
+          esconderFormulario();
+        }
+        if (eventoEnter.key == "Enter") {
+          moverAlSiguienteInput(eventoEnter, evento.target.id)
+        }
+      });
       btnCancelar.addEventListener("click", () => {
         esconderFormulario();
       });
