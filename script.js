@@ -256,12 +256,12 @@ function esconderFormulario() {
   contenedorEscondido.removeChild(transparente);
 }
 
-function buscar(buscador){
+function buscar(buscador) {
   let clientes = Array.from(document.getElementsByClassName('cliente'));
   clientes.forEach(element => {
-    if(!(element.textContent.toLowerCase().includes(buscador.value.toLowerCase()))){
+    if (!(element.textContent.toLowerCase().includes(buscador.value.toLowerCase()))) {
       element.classList.add('quitar');
-    }else{
+    } else {
       element.classList.remove('quitar');
     }
   });
@@ -306,13 +306,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let contenedorGuardar = document.getElementById('contenedorGuardar');
   contenedorGuardar.addEventListener('keydown', (eventoEnter) => {
-    if(eventoEnter.key == 'Enter'){
-      moverAlSiguienteInput(eventoEnter, agregar ,'formVisible')
+    if (eventoEnter.key == 'Enter') {
+      moverAlSiguienteInput(eventoEnter, agregar, 'formVisible')
     }
   })
 
   let buscador = document.getElementById('buscador');
-  buscador.addEventListener('keyup', () =>{
+  buscador.addEventListener('keyup', () => {
     buscar(buscador)
   })
 });
