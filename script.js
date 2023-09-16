@@ -99,7 +99,7 @@ function checkIdentico(array, numero, cedula) {
 function mostrar(objeto, arrayClientes) {
   let contenedor = document.getElementById("contenedor-lista");
   contenedor.innerHTML += `
-        <tr>
+        <tr class="cliente">
             <td>${objeto.nombre}</td>
             <td>${objeto.apellido}</td>
             <td>${objeto.cedula}</td>
@@ -122,7 +122,7 @@ function cargarLista(lista) {
   let contenedor = document.getElementById("contenedor-lista");
   for (let i = 0; i < lista.length; i++) {
     contenedor.innerHTML += `
-            <tr>
+            <tr class="cliente">
                 <td>${lista[i].nombre}</td>
                 <td>${lista[i].apellido}</td>
                 <td>${lista[i].cedula}</td>
@@ -256,10 +256,13 @@ function esconderFormulario() {
   contenedorEscondido.removeChild(transparente);
 }
 
-function buscar(array, buscador){
-  array.forEach(element => {
-    if(element.textContent == buscador.value){
-      
+function buscar(buscador){
+  let clientes = Array.from(document.getElementsByClassName('cliente'));
+  clientes.forEach(element => {
+    if(!(element.textContent.toLowerCase().includes(buscador.value.toLowerCase()))){
+      element.classList.add('quitar');
+    }else{
+      element.classList.remove('quitar');
     }
   });
 }
@@ -310,6 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let buscador = document.getElementById('buscador');
   buscador.addEventListener('keyup', () =>{
-    buscar(arrayClientes, buscador)
+    buscar(buscador)
   })
 });

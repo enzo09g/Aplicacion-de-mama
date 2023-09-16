@@ -71,3 +71,6 @@ html, body {
 
 /* Fin estilo buscador */
  
+.quitar{
+    display: none;
+}
