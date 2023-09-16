@@ -56,3 +56,21 @@ html, body {
     position: fixed;
     top: 0px;   
 }
+
+/* Estilo buscador */
+
+.input-text:focus{  
+    box-shadow: 0px 0px 0px;
+    border-color:#9f9f9f;
+    outline: 0px;
+}
+
+.form-control {
+    border: 1px solid #22c3d5;
+}
+
+/* Fin estilo buscador */
+ 
+.quitar{
+    display: none;
+}
