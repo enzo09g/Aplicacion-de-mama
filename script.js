@@ -256,6 +256,14 @@ function esconderFormulario() {
   contenedorEscondido.removeChild(transparente);
 }
 
+function buscar(array, buscador){
+  array.forEach(element => {
+    if(element.textContent == buscador.value){
+      
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   actualizarArrayClientes();
   cargarLista(arrayClientes);
@@ -298,5 +306,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(eventoEnter.key == 'Enter'){
       moverAlSiguienteInput(eventoEnter, agregar ,'formVisible')
     }
+  })
+
+  let buscador = document.getElementById('buscador');
+  buscador.addEventListener('keyup', () =>{
+    buscar(arrayClientes, buscador)
   })
 });
